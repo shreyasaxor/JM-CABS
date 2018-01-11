@@ -1,0 +1,70 @@
+
+{% load mathfilters %}
+<div class="g-bg-color--sky-light">
+            <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+                <div class="g-text-center--xs g-margin-b-80--xs">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Plan</p>
+                    <h2 class="g-font-size-32--xs g-font-size-36--md">Finding your Plan</h2>
+                </div>
+
+
+                <div class="row g-row-col--5">
+<!-- tt  ac    -->
+                    <div class="col-lg-4 col-md-4 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding" >
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/tt.png" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Tempo Traveller</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.15_____NON A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.350</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{350|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}</span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+                                    <span class="s-plan-v1__price-tag">
+                                        {% if round_trip >= 300 %}
+
+                                        {% with allowance=350|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:15|floatformat  %}
+                                          Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=350|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:15|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+                </div>
+            </div>
+</div>

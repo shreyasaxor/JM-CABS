@@ -1,0 +1,361 @@
+
+{% load mathfilters %}
+<div class="g-bg-color--sky-light">
+            <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+                <div class="g-text-center--xs g-margin-b-80--xs">
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Plan</p>
+                    <h2 class="g-font-size-32--xs g-font-size-36--md">Finding your Plan</h2>
+                </div>
+
+
+                <div class="row g-row-col--5">
+                    <!-- non  ac indica  -->
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding" >
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/indicavista.png" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Indica Non AC</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.7.50 _____NON A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.300</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{300|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}
+                                </span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+                                    <span class="s-plan-v1__price-tag">
+                                        {% if round_trip >= 300 %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:7.5|floatformat  %}
+                                          Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:7.5|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+                    <!--ac indica Plan -->
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding">
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/indicavista.png" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Indica Ac</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.8.50 _____ A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.300</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{300|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}</span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+
+
+                                    <span class="s-plan-v1__price-tag">
+                                        {% if round_trip >= 300 %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:8.5|floatformat  %}
+                                         Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:8.5|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+                    <!-- xcent non acPlan -->
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding">
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/xcent.png" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Xcent Non Ac</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.8.50 _____NON A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.300</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{300|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}</span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+                                    <span class="s-plan-v1__price-tag">
+                                        {% if round_trip >= 300 %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:8.5|floatformat  %}
+                                          Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:8.5|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+                    <!--  xcent acPlan -->
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding">
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/xcent.png" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Xcent Ac</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.9.00 _____A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.300</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{300|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}</span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+                                    <span class="s-plan-v1__price-tag">
+                                       {% if round_trip >= 300 %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:9|floatformat  %}
+                                          Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:9|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+                   <!--  etios non Plan -->
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding">
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/etios.jpg" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Etios Non Ac</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.8.50 _____A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.300</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{300|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}</span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+                                    <span class="s-plan-v1__price-tag">
+                                       {% if round_trip >= 300 %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:8.5|floatformat  %}
+                                          Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:8.5|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+                <!--  etios Ac Plan -->
+                    <div class="col-lg-3 col-md-3 col-sm-6  col-xs-12 g-margin-b-10--xs g-margin-b-0--lg top_padding">
+                        <div class="wow fadeInUp animated" data-wow-duration=".3" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <div class="s-plan-v1 g-text-center--xs g-bg-color--white paddingcar">
+                                <img src="static/img/etios.jpg" class="indica">
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Etios Ac</h3>
+                                <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Price / Km:<span class="s-plan-v1__price-tag"  > Rs.9.50 _____A/C</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Roundtrip Distance: <span class="s-plan-v1__price-tag"  >{{round_trip}} km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Minimum Kms/Day:  <span class="s-plan-v1__price-tag"  >300km</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Driver Allowance/Day:  <span class="s-plan-v1__price-tag"  >Rs.300</span></li>
+                                    <li><i class="g-font-size-13--xs g-color--primary g-margin-r-10--xs ti-check"></i> Total Driver Allowance:  <span class="s-plan-v1__price-tag"  >Rs{{300|mul:duration}}</span></li>
+
+                                </ul>
+                                <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Round Trip</h3>
+                                <span class="s-plan-v1__price-tag">{% if round_trip >= 300 %}
+
+                                    {{round_trip|mul:duration |floatformat }} km
+                                    {% else %}
+
+                                    {{300|mul:duration |floatformat  }} km</span>
+
+                                    {% endif %}</span>
+                                <div class="g-margin-b-40--xs">
+                                    <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs" style="margin: 5px;">Estimated Price</h3>
+
+                                    <span class="s-plan-v1__price-tag">
+                                       {% if round_trip >= 300 %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=round_trip|mul:duration|mul:9.5|floatformat  %}
+                                          Rs{{allowance|add:trip_amount}}
+                                        {% endwith %}
+                                        {% endwith %}
+
+                                        {% else %}
+
+                                        {% with allowance=300|mul:duration  %}
+                                        {% with trip_amount=300|mul:duration|mul:9.5|floatformat  %}
+
+                                            Rs{{allowance|add:trip_amount}}
+
+                                        {% endwith %}
+                                        {% endwith %}
+                                {% endif %}
+
+
+
+                                    </span>
+                                </div>
+
+                                <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Signup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Plan -->
+
+
+                    <!-- End Plan -->
+                </div>
+            </div>
+</div>
