@@ -90,12 +90,11 @@
 
                         <!-- Menu List -->                                
                         <ul class="list-unstyled s-header__nav-menu">
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="about.html">About</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="team.html">Team</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="services.html">Services</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="events.html">Events</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="faq.html">FAQ</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Contacts</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" >About</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" >Team</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" >Services</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider">FAQ</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" >Contacts</a></li>
                         </ul>
                         <!-- End Menu List -->
                     </div>
@@ -593,7 +592,8 @@
 
         <!--========== JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) ==========-->
         <!-- Vendor -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>AIzaSyCRo8Tq2ivFzrw9h4Km8vdVVASQ1GNo3ek
+
         <script type="text/javascript" src="{% static  'vendor/jquery.min.js' %}"></script>
         <script type="text/javascript" src="{% static  'vendor/jquery.migrate.min.js' %}"></script>
         <script type="text/javascript" src="{% static  'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -716,7 +716,7 @@ function show_cars(){
             $('#myModal').modal('show')
                 $.ajax({
                     datatype: 'JSON',
-                    url: "{% url 'Showcar' %}",
+                    url: "/show/",
                     data:JSON.stringify(datastring),
                     method: "POST",
                       success: function (data) {

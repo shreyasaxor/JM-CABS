@@ -27,7 +27,7 @@ SECRET_KEY = 'ie9(978w=cir4^=*urjht+%7_^ir!y*h&0%g6w_2x!eg0&jsu#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -84,15 +84,8 @@ WSGI_APPLICATION = 'mycabs.wsgi.application'
 
 DATABASES = {
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jmcabs',
-        'HOST': 'localhost',
-        'USER': 'aveto',
-        'PASSWORD': 'admin123',
-
-
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

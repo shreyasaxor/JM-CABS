@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from home.views import home,Showcar
 
 urlpatterns = [
     # Examples:
@@ -7,7 +8,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'home.views.home', name='home'),
-    url(r'^home/', include('home.urls')),
-    url(r'^Show/?$','home.views.Showcar',name='Showcar'),
+    url(r'^$', include('home.urls')),
+    url(r'^show/', view=Showcar, name='Showcar'),
+
 ]

@@ -26,12 +26,6 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class contact_info(models.Model):
-    name = models.CharField(max_length=250)
-    email = models.EmailField(max_length=250)
-    phone = models.IntegerField(null=True)
-    message=models.CharField(max_length=250)
-
 
 class User(AbstractBaseUser):
     first_name = models.CharField(max_length=50)
@@ -42,3 +36,24 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']
     objects = UserManager()
+
+
+
+class ContactInfo(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField(max_length=250)
+    phone = models.IntegerField(null=True)
+    message=models.CharField(max_length=250)
+
+class Bookings(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField(max_length=250)
+    phone = models.IntegerField(null=True)
+    message=models.CharField(max_length=250,)
+    destination=models.CharField(max_length=250,null=True )
+    pickup_time = models.DateTimeField(null=True)
+    carselected=models.CharField(max_length=250)
+    assigned = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+

@@ -34,15 +34,12 @@ def Showcar(request, *args, ** kwargs):
     gmaps = googlemaps.Client(key='AIzaSyAwS1dG9Y5vT_F3jcul4d2C69nRsroOVOE')
     local = gmaps.distance_matrix(cars_det["from"], cars_det['to'])
     print json.dumps(local, indent=4, sort_keys=True)
-    print local['rows'][0]['elements'][0]['status'],"dfgdfg"
-    if local['status'] == 'OK':
-        print local['rows'][0]['elements'][0]['distance']['text'],"distace"
+    if not local['rows'][0]['elements'][0]['status'] =="NOT_FOUND":
+        int_dis=local['rows'][0]['elements'][0]['distance']['text']
     else:
-        print local['status'],'errror'
-    int_dis=local['rows'][0]['elements'][0]['distance']['text']
+        print "route not found"
 
     distance = int_dis.replace(' km','')
-    print distance,"distanceeeeesdistanceeeeesdistanceeeees"
 
     distance=distance.replace(',','')
     distance = float(distance)
@@ -52,19 +49,19 @@ def Showcar(request, *args, ** kwargs):
     if seater==4:
         data={}
         data['status']=1
-        data['html'] = render_to_string('home_temp/4seater.html', sdata, context_instance=RequestContext(request))
+        data['html'] = render_to_string('home_temp/4seater.html', sdata)
     elif seater == 6:
         data = {}
         data['status'] = 1
-        data['html'] = render_to_string('home_temp/6seater.html', sdata, context_instance=RequestContext(request))
+        data['html'] = render_to_string('home_temp/6seater.html', sdata)
     elif seater == 7:
         data = {}
         data['status'] = 1
-        data['html'] = render_to_string('home_temp/7seater.html', sdata, context_instance=RequestContext(request))
+        data['html'] = render_to_string('home_temp/7seater.html', sdata)
     elif seater==11:
         data = {}
         data['status'] = 1
-        data['html'] = render_to_string('home_temp/11seater.html', sdata, context_instance=RequestContext(request))
+        data['html'] = render_to_string('home_temp/11seater.html', sdata)
 
     return HttpResponse(json.dumps(data), content_type='application/x-json')
 
