@@ -7,7 +7,7 @@ urlpatterns = [
     # url(r'^$', 'mycabs.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
     url(r'^$', include('home.urls')),
     url(r'^show/', view=Showcar, name='Showcar'),
 

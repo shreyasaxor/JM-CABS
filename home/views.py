@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.template import Template
 from django.template.response import TemplateResponse, HttpResponse
 from django.template.loader import render_to_string
-from django.core.urlresolvers import reverse
+
 from django.http import HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import ListView, CreateView, UpdateView, View
 
+from django.urls import reverse
 
 from django.template import RequestContext
 from django.shortcuts import render, render_to_response
@@ -29,15 +30,16 @@ home = Home.as_view()
 @method_decorator(csrf_exempt)
 def Showcar(request, *args, ** kwargs):
     template_name =''
+    print(request.POST)
     cars_det = json.loads(request.body)
 
     gmaps = googlemaps.Client(key='AIzaSyAwS1dG9Y5vT_F3jcul4d2C69nRsroOVOE')
     local = gmaps.distance_matrix(cars_det["from"], cars_det['to'])
-    print json.dumps(local, indent=4, sort_keys=True)
+    print(json.dumps(local, indent=4, sort_keys=True))
     if not local['rows'][0]['elements'][0]['status'] =="NOT_FOUND":
         int_dis=local['rows'][0]['elements'][0]['distance']['text']
     else:
-        print "route not found"
+        print("route not found")
 
     distance = int_dis.replace(' km','')
 
