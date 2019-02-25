@@ -30,7 +30,8 @@ home = Home.as_view()
 @method_decorator(csrf_exempt)
 def Showcar(request, *args, ** kwargs):
     template_name =''
-    cars_det = json.loads(request.body)
+    print(request.body)
+    cars_det = json.loads(request.body.decode())
 
     gmaps = googlemaps.Client(key='AIzaSyAwS1dG9Y5vT_F3jcul4d2C69nRsroOVOE')
     local = gmaps.distance_matrix(cars_det["from"], cars_det['to'])
