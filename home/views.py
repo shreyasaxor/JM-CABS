@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.template import Template
 from django.template.response import TemplateResponse, HttpResponse
 from django.template.loader import render_to_string
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+
 from django.http import HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import ListView, CreateView, UpdateView, View
@@ -33,11 +34,11 @@ def Showcar(request, *args, ** kwargs):
 
     gmaps = googlemaps.Client(key='AIzaSyAwS1dG9Y5vT_F3jcul4d2C69nRsroOVOE')
     local = gmaps.distance_matrix(cars_det["from"], cars_det['to'])
-    print json.dumps(local, indent=4, sort_keys=True)
+    print(json.dumps(local, indent=4, sort_keys=True))
     if not local['rows'][0]['elements'][0]['status'] =="NOT_FOUND":
         int_dis=local['rows'][0]['elements'][0]['distance']['text']
     else:
-        print "route not found"
+        print("route not found")
 
     distance = int_dis.replace(' km','')
 
